@@ -12,7 +12,6 @@ async function newEventExample() {
     const repo = 'valentina-business-plan'
     const branch = 'main'
     const filePath = 'db/eventi.json'
-    const githubToken = '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'
 
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
 
@@ -20,7 +19,7 @@ async function newEventExample() {
         // Step 1: Recupera il file JSON e il suo SHA
         const fileResponse = await fetch(apiUrl, {
             headers: {
-                Authorization: `Bearer ${githubToken}`,
+                Authorization: `Bearer ${GITHUB_TOKEN}`,
                 Accept: 'application/vnd.github.v3+json',
             },
         });
@@ -48,7 +47,7 @@ async function newEventExample() {
         const updateResponse = await fetch(apiUrl, {
             method: 'PUT',
             headers: {
-                Authorization: `Bearer ${githubToken}`,
+                Authorization: `Bearer ${GITHUB_TOKEN}`,
                 Accept: 'application/vnd.github.v3+json',
                 'Content-Type': 'application/json',
             },

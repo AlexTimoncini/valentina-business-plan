@@ -27,7 +27,7 @@ async function getEvents() {
         // Step 1: Recupera il file JSON e il suo SHA
         const fileResponse = await fetch(apiUrl, {
             headers: {
-                Authorization: `Bearer ${githubToken}`,
+                Authorization: `Bearer ${GITHUB_TOKEN}`,
                 Accept: 'application/vnd.github.v3+json',
             },
         });
