@@ -6,14 +6,7 @@ async function init() {
         events = rs
     })
     console.log(events)
-    events.forEach(ev=>{
-        console.log(ev)
-        document.getElementById("eventi").insertAdjacentHTML("beforeend", `
-            <li>${ev.title} - ${new Date(ev.event_date).toLocaleDateString()}</li>
-        `)
-    })
 }
-/*GET EVENTI*/
 async function getEvents() {
     try {
         const response = await fetch("https://taggx.it/eventi", {

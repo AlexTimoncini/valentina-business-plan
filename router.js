@@ -5,13 +5,19 @@ import { Router } from './js/classes/router.class.js'
 let router = new Router('https://alextimoncini.github.io/fruity-cross');
 //rotte
 router.get('/', function(){
-    buildPage('home.html',
+    buildPage('scopri.html',
         [
             'home.css'
         ],
         [
             {url: 'home.js'}
-        ]).then(()=>stopLoading())
+        ]).then(()=> {
+        stopLoading()
+        if(document.querySelector("footer li.active")){
+            document.querySelector("footer li.active").classList.remove("active")
+        }
+        document.querySelector('footer li[data-router="discover"]').classList.add("active")
+    })
 });
 router.get('/nuovo-evento', function(){
     buildPage('new-event.html',
@@ -20,7 +26,42 @@ router.get('/nuovo-evento', function(){
         ],
         [
             {url: 'new-event.js'}
-        ]).then(()=>stopLoading())
+        ]).then(()=> {
+        stopLoading()
+        if(document.querySelector("footer li.active")){
+            document.querySelector("footer li.active").classList.remove("active")
+        }
+        document.querySelector('footer li[data-router="new"]').classList.add("active")
+    })
+});
+router.get('/preferiti', function(){
+    buildPage('favourite.html',
+        [
+            'favourite.css'
+        ],
+        [
+            {url: 'favourite.js'}
+        ]).then(()=> {
+        stopLoading()
+        if(document.querySelector("footer li.active")){
+            document.querySelector("footer li.active").classList.remove("active")
+        }
+        document.querySelector('footer li[data-router="fav"]').classList.add("active")
+    })
+});
+router.get('/team', function(){
+    buildPage('team.html',
+        [
+            'team.css'
+        ],
+        [
+        ]).then(()=> {
+        stopLoading()
+        if(document.querySelector("footer li.active")){
+            document.querySelector("footer li.active").classList.remove("active")
+        }
+        document.querySelector('footer li[data-router="team"]').classList.add("active")
+    })
 });
 
 router.start();

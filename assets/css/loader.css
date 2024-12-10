@@ -10,7 +10,7 @@
     height: 100vh;
     left: 0;
     top: 0;
-    background-color: var(--dark);
+    background-color: var(--white);
     z-index: 1000;
 }
 .wrapper{
@@ -27,7 +27,7 @@
     height:20px;
     position: absolute;
     border-radius: 50%;
-    background-color: var(--main-color);
+    background-color: var(--main);
     left:25%;
     transform-origin: 50%;
     animation: circle .5s alternate infinite ease;
@@ -61,7 +61,7 @@
     width:20px;
     height:4px;
     border-radius: 50%;
-    background-color: var(--main-color);
+    background-color: var(--main);
     opacity: .5;
     position: absolute;
     top:62px;
