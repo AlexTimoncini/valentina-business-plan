@@ -13,13 +13,13 @@ router.get('/', function(){
             {url: 'home.js'}
         ]).then(()=>stopLoading())
 });
-router.get('/level', function(){
-    buildPage('level.html',
+router.get('/nuovo-evento', function(){
+    buildPage('new-event.html',
         [
-            'level.css'
+            'new-event.css'
         ],
         [
-            {url: 'level.js'}
+            {url: 'new-event.js'}
         ]).then(()=>stopLoading())
 });
 
@@ -100,14 +100,12 @@ async function buildPage(mainHTML, css, scriptList){
 
 }
 
-//loader
 function startLoading(){
     disableScroll()
     if (document.getElementById("loader")) {
         document.getElementById("loader").classList.remove("hidden")
     }
 }
-
 function stopLoading(){
     setTimeout(() => {
         document.getElementById('loader').classList.add('hidden');
