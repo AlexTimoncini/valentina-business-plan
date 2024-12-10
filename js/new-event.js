@@ -1,11 +1,6 @@
 console.log("NEW EVENT")
 init()
 function init(){
-    document.getElementById("example").addEventListener("click", async ()=>{
-        await newEventExample().then(rs => {
-            //top.location.href = "/"
-        })
-    })
 }
 async function newEventExample() {
     let data = {
