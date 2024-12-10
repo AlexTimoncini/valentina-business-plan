@@ -29,13 +29,13 @@ footer li{
     text-decoration: none;
 }
 footer img{
-    height: 25px;
+    height: 20px;
     display: block;
     margin: 0 auto;
     fill: var(--lgray);
 }
 footer span{
-    height: 17px;
+    height: 15px;
     display: block;
 }
 footer li.active{
