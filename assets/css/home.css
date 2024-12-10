@@ -1,0 +1,15 @@
+#posizione{
+    color: var(--main);
+    font-weight: 600;
+}
+.posizione-wrap{
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+section{
+    margin-top: 1rem;
+}
+.section-title{
+    font
+}

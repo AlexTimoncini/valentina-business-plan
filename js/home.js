@@ -1,4 +1,3 @@
-console.log("HOMEPAGE")
 init()
 async function init() {
     let events;
@@ -6,12 +5,37 @@ async function init() {
         events = rs
     })
     console.log(events)
-    events.forEach(ev=>{
-        console.log(ev)
-        document.getElementById("eventi").insertAdjacentHTML("beforeend", `
-            <li>${ev.title} - ${new Date(ev.event_date).toLocaleDateString()}</li>
-        `)
-    })
+    //posizione
+    if(!localStorage.getItem("posizione")){
+        localStorage.setItem("posizione", "Italia")
+    }
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+            async (position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    const city = data.address.city || data.address.town || data.address.village
+                    if(city){
+                        localStorage.setItem("posizione", "Italia - "+city)
+                    }
+                } catch (error) {
+                    console.error("Errore nel recupero del nome della città:", error)
+                }
+            },
+            (error) => {
+                console.error("Errore durante l'ottenimento della posizione:", error)
+            }
+        )
+    } else {
+        console.error("La Geolocalizzazione non è supportata dal browser.")
+    }
+    
+    let posizione = localStorage.getItem("posizione")
+    document.getElementById("posizione").innerText = posizione
 }
 /*GET EVENTI*/
 async function getEvents() {

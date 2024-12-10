@@ -72,7 +72,6 @@ async function buildPage(mainHTML, css, scriptList){
     removeOldStyles()
     loadCss();
     if (!document.getElementById("loader"))await loader()
-    if (!document.getElementById("navbar"))await navbar()
     if (!document.getElementById("footer"))await footer()
     await main()
     await scripts()
@@ -94,11 +93,6 @@ async function buildPage(mainHTML, css, scriptList){
     }
     async function loader() {
         const resp = await fetch("./components/loader.html");
-        const html = await resp.text();
-        document.getElementById("app").insertAdjacentHTML("beforebegin", html);
-    }
-    async function navbar() {
-        const resp = await fetch("./components/navbar.html");
         const html = await resp.text();
         document.getElementById("app").insertAdjacentHTML("beforebegin", html);
     }
