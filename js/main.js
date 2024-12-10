@@ -96,18 +96,4 @@ function closeAlertGX(){
         alert.remove()
     })
 }
-/*
-async function getLevels() {
-    try {
-        const response = await fetch('./levels/levels.json');
-        if (!response.ok) {
-            throw new Error('Failed to load level manifest');
-        }
-        const manifest = await response.json()
-        return manifest.levels
-    } catch (error) {
-        return false
-    }
-}
-*/
-
+const GITHUB_TOKEN = "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"
