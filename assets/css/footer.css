@@ -10,6 +10,7 @@ footer{
     max-width: 600px;
     border-left: 1px solid var(--lgray);
     border-right: 1px solid var(--lgray);
+    z-index: 500;
 }
 footer ul{
     display: flex;
