@@ -35,8 +35,9 @@ async function getEvents() {
     try {
         const fileResponse = await fetch(apiUrl, {
             headers: {
-                Authorization: `Bearer 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`,
-                Accept: 'application/vnd.github.v3+json',
+                'Authorization': `Bearer ${GITHUB_TOKEN}`,
+                'Accept': 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json',
             },
         })
         if (!fileResponse.ok) {
