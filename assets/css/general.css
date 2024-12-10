@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     user-select: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 :root{
     --white: #fefefe;
@@ -16,7 +17,7 @@ body{
     background: var(--white);
     min-height: 100vh;
     overflow-x: hidden;
-    font-family: AkayaTelivigala, sans-serif;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
 }
@@ -27,4 +28,8 @@ body{
     margin: 0 auto;
     border-left: 1px solid var(--lgray);
     border-right: 1px solid var(--lgray);
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url(../Fonts/Poppins-Regular.ttf) format('truetype');
 }
