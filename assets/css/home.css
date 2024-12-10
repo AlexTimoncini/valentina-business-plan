@@ -11,5 +11,71 @@ section{
     margin-top: 1rem;
 }
 .section-title{
-    font
+    font-size: 1.1rem;
+}
+/*EVENTI*/
+.scrollable-events{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    column-gap: 20px;
+    padding-bottom: 15px;
+}
+.event{
+    border: 1px solid var(--lgray);
+    width: 300px;
+    overflow: hidden;
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+.event-img{
+    height: 110px;
+    overflow: hidden;
+}
+.event-img img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.event-body{
+    height: 50px;
+    background-color: var(--white);
+    padding: 10px 15px;
+}
+.event-title{
+    font-size: 0.9rem;
+}
+.event-data{
+    font-size: 0.8rem;
+}
+.event-footer{
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+.crowd-counter{
+    height: 40px;
+    line-height: 40px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    column-gap: 7px;
+
+}
+.crowd-counter img{
+    height: 20px;
+    width: 100%;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0) saturate(100%) invert(29%) sepia(44%) saturate(1175%) hue-rotate(76deg) brightness(95%) contrast(83%)
+}
+.entry-price{
+    line-height: 40px;
+    color: var(--main);
+    font-weight: bold;
 }

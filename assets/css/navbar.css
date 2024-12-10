@@ -1,8 +1,0 @@
-nav{
-    max-width: 600px;
-    margin: 0 auto;
-    border-left: 1px solid var(--lgray);
-    border-right: 1px solid var(--lgray);
-    width: 100%;
-    border-bottom: 1px solid var(--lgray);
-}
