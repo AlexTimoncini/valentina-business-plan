@@ -1,4 +1,10 @@
 {
   "eventi": [
+    {
+      "id": 2,
+      "publish_date": "12/10/2024",
+      "event_date": "12/31/2024",
+      "title": "Capodanno"
+    }
   ]
 }
