@@ -19,23 +19,29 @@ async function getEvents() {
     const repo = 'valentina-business-plan'
     const branch = 'main'
     const filePath = 'db/eventi.json'
-    const githubToken = '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'
-
-    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
-
+    let GITHUB_TOKEN = ''
     try {
-        // Step 1: Recupera il file JSON e il suo SHA
+        const response = await fetch("./.env")
+        if (!response.ok) {
+            throw new Error(`Errore nel recupero del file: ${response.status}`);
+        }
+        GITHUB_TOKEN = await response.text();
+        GITHUB_TOKEN = atob(GITHUB_TOKEN.substring(0, GITHUB_TOKEN.length - 1))
+    } catch {
+        console.error("Errore in autenticazione: .env non trovato")
+    }
+    const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+    console.log(GITHUB_TOKEN)
+    try {
         const fileResponse = await fetch(apiUrl, {
             headers: {
-                Authorization: `Bearer ${GITHUB_TOKEN}`,
+                Authorization: `Bearer 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`,
                 Accept: 'application/vnd.github.v3+json',
             },
-        });
-
+        })
         if (!fileResponse.ok) {
             throw new Error(`Errore nel recupero del file: ${fileResponse.status}`);
         }
-
         const fileData = await fileResponse.json();
         const fileSha = fileData.sha;
         const fileContent = atob(fileData.content);
