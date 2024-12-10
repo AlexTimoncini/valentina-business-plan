@@ -79,3 +79,42 @@ section{
     color: var(--main);
     font-weight: bold;
 }
+.sponsor{
+    width: 100%;
+    background-image: url('/assets/images/sponsor.jpg');
+    height: 250px;
+    overflow: hidden;
+    border-radius: 15px;
+    color: var(--white);
+    padding: 20px 40% 20px 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.sponsor::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,.3);
+    z-index: 1;
+}
+.sponsor p{
+    position: relative;
+    z-index: 2;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+.sponsor a{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--white);
+    color: black;
+    border-radius: 15px;
+    display: block;
+    padding: 10px 20px;
+    z-index: 2;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}

@@ -11,6 +11,7 @@
     --white: #fefefe;
     --main: #216c21;
     --lgray: #ccc;
+    --dgray: #bababa;
 }
 
 body{
@@ -30,6 +31,7 @@ body{
     border-right: 1px solid var(--lgray);
     padding: 10px 20px;
 }
+
 @font-face {
     font-family: 'Poppins';
     src: url(/assets/fonts/Poppins-Regular.ttf) format('truetype');
