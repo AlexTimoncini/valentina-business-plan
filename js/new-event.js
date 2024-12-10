@@ -1,6 +1,11 @@
 console.log("NEW EVENT")
 init()
-function init(){
+function init() {
+    if (!sessionStorage.getItem("user")) {
+        document.getElementById("nuovo_evento").innerHTML = `
+            <p>Effettua il <a class="main-link" href="/?logout">login</a> per poter creare i tuoi eventi!</p>
+        `
+    }
 }
 async function newEventExample() {
     let data = {

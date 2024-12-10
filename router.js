@@ -34,6 +34,17 @@ router.get('/nuovo-evento', function(){
         document.querySelector('footer li[data-router="new"]').classList.add("active")
     })
 });
+router.get('/login', function(){
+    buildPage('login.html',
+        [
+            'login.css'
+        ],
+        [
+            {url: 'login.js'}
+        ]).then(()=> {
+        stopLoading()
+    })
+});
 router.get('/preferiti', function(){
     buildPage('favourite.html',
         [

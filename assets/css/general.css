@@ -31,7 +31,10 @@ body{
     border-right: 1px solid var(--lgray);
     padding: 10px 20px 65px;
 }
-
+.main-link{
+    text-decoration: underline;
+    color: var(--main)
+}
 @font-face {
     font-family: 'Poppins';
     src: url(/assets/fonts/Poppins-Regular.ttf) format('truetype');

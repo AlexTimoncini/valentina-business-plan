@@ -32,6 +32,7 @@ section{
 .event-img{
     height: 110px;
     overflow: hidden;
+    background-color: var(--main);
 }
 .event-img img{
     display: block;
@@ -65,7 +66,7 @@ section{
     display: flex;
     align-items: center;
     column-gap: 7px;
-
+    text-wrap: nowrap;
 }
 .crowd-counter img{
     height: 20px;

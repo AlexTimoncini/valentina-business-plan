@@ -1,33 +1,160 @@
 init()
 async function init() {
+    if(!sessionStorage.getItem("userId")){
+       top.location.href = "#/login"
+    }
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    if(urlParams.has('logout')){
+        sessionStorage.clear()
+        top.location.href = "https://insiemeventi.it/#/login"
+        return
+    }
     let events;
-    await getEvents().then(rs=>{
+    await getEvents('new').then(rs=>{
         events = rs
     })
-    console.log(events)
-    events.forEach(ev => {
+    if(events.length){
+        events.forEach(ev => {
+            let html = `
+            <li class="event">
+                <div class="event-img">
+                    <img src="${ev.image}" alt="" draggable="false">
+                </div>
+                <div class="event-body">
+                    <h3 class="event-title">${ev.title}</h3>
+                    <p class="event-data">${new Date(ev.event_date).toLocaleDateString()} - ${ev.start.substring(0, 5)} / ${ev.end.substring(0, 5)}</p>
+                </div>
+                <div class="event-footer">
+                    <div class="crowd-counter">
+                        <img src="/assets/images/team.svg" alt="crowd icon">
+                        <span>${!isNaN(parseInt(ev.going)) ? ev.going : 0} / ${ev.crowd_counter}</span>
+                    </div>
+                    <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price : 'Gratis'}</p>
+                </div>
+            </li>
+            `
+            document.getElementById("new_events").insertAdjacentHTML("beforeend", html)
+        })
+    } else {
+        let html = `
+            <li class="event">
+                <div class="event-img">
+                </div>
+                <div class="event-body">
+                    <h3 class="event-title">Nessun evento disponibile!</h3>
+                    <p class="event-data">&nbsp;</p>
+                </div>
+            <div class="event-footer">
+                <div class="crowd-counter">
+                </div>
+                <p class="entry-price">&nbsp;</p>
+            </div>
+            </li>`
+        document.getElementById("new_events").insertAdjacentHTML("beforeend", html)
+    }
+    await getEvents('old').then(rs=>{
+        events = rs
+    })
+    if(events.length) {
+        events.forEach(ev => {
+            let html = `
+            <li class="event">
+                <div class="event-img">
+                    <img src="${ev.image}" alt="" draggable="false">
+                </div>
+                <div class="event-body">
+                    <h3 class="event-title">${ev.title}</h3>
+                    <p class="event-data">${new Date(ev.event_date).toLocaleDateString()} - ${ev.start.substring(0, 5)} / ${ev.end.substring(0, 5)}</p>
+                </div>
+                <div class="event-footer">
+                    <div class="crowd-counter">
+                        <img src="/assets/images/team.svg" alt="crowd icon">
+                        <span>${!isNaN(parseInt(ev.going)) ? ev.going : 0} / ${ev.crowd_counter}</span>
+                    </div>
+                    <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price : 'Gratis'}</p>
+                </div>
+            </li>
+            `
+            document.getElementById("old_events").insertAdjacentHTML("beforeend", html)
+        })
+    } else {
+        let html = `
+            <li class="event">
+                <div class="event-img">
+                </div>
+                <div class="event-body">
+                    <h3 class="event-title">Nessun evento nei prossimi 7 giorni!</h3>
+                    <p class="event-data">&nbsp;</p>
+                </div>
+            <div class="event-footer">
+                <div class="crowd-counter">
+                </div>
+                <p class="entry-price">&nbsp;</p>
+            </div>
+            </li>`
+        document.getElementById("old_events").insertAdjacentHTML("beforeend", html)
+    }
+
+    if(sessionStorage.getItem("user")){
+        await getEvents('mine').then(rs=>{
+            events = rs
+        })
+        if(events.length){
+            events.forEach(ev => {
+                let html = `
+            <li class="event">
+                <div class="event-img">
+                    <img src="${ev.image}" alt="" draggable="false">
+                </div>
+                <div class="event-body">
+                    <h3 class="event-title">${ev.title}</h3>
+                    <p class="event-data">${new Date(ev.event_date).toLocaleDateString()} - ${ev.start.substring(0, 5)} / ${ev.end.substring(0, 5)}</p>
+                </div>
+                <div class="event-footer">
+                    <div class="crowd-counter">
+                        <img src="/assets/images/team.svg" alt="crowd icon">
+                        <span>${!isNaN(parseInt(ev.going)) ? ev.going : 0} / ${ev.crowd_counter}</span>
+                    </div>
+                    <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price : 'Gratis'}</p>
+                </div>
+            </li>`
+                document.getElementById("your_events").insertAdjacentHTML("beforeend", html)
+            })
+        } else {
+            let html = `
+            <li class="event">
+                <div class="event-img">
+                </div>
+                <div class="event-body">
+                    <h3 class="event-title">Nessun evento salvato!</h3>
+                    <p class="event-data">&nbsp;</p>
+                </div>
+            <div class="event-footer">
+                <div class="crowd-counter">
+                </div>
+                <p class="entry-price">&nbsp;</p>
+            </div>
+            </li>`
+            document.getElementById("your_events").insertAdjacentHTML("beforeend", html)
+        }
+    } else{
         let html = `
         <li class="event">
             <div class="event-img">
-                <img src="${ev.image}" alt="" draggable="false">
             </div>
             <div class="event-body">
-                <h3 class="event-title">${ev.title}</h3>
-                <p class="event-data">${new Date(ev.event_date).toLocaleDateString()} - ${ev.start.substring(0, 5)} / ${ev.end.substring(0, 5)}</p>
+                <h3 class="event-title">Effettua il Login per salvare le date!</h3>
+                <p class="event-data"></p>
             </div>
             <div class="event-footer">
                 <div class="crowd-counter">
-                    <img src="/assets/images/team.svg" alt="crowd icon">
-                    <span>${ev.crowd_counter}</span>
                 </div>
-                <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price : 'Gratis'}</p>
+                <p class="entry-price">&nbsp;</p>
             </div>
-        </li>
-        `
-        document.getElementById("new_events").insertAdjacentHTML("beforeend", html)
-        document.getElementById("old_events").insertAdjacentHTML("beforeend", html)
+        </li>`
         document.getElementById("your_events").insertAdjacentHTML("beforeend", html)
-    })
+    }
     //posizione
     if(!localStorage.getItem("posizione")){
         localStorage.setItem("posizione", "Italia")
@@ -61,9 +188,17 @@ async function init() {
     document.getElementById("posizione").innerText = posizione
 }
 /*GET EVENTI*/
-async function getEvents() {
+async function getEvents(type) {
+    let url = 'https://taggx.it/'
+    if(type === 'new'){
+        url += 'eventi-new'
+    } else if(type === 'old') {
+        url += 'eventi-old'
+    } else if(type === 'mine') {
+        url += '/utenti/'+sessionStorage.getItem('userId')+'/eventi'
+    }
     try {
-        const response = await fetch("https://taggx.it/eventi", {
+        const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
