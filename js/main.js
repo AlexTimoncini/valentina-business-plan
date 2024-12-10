@@ -96,4 +96,3 @@ function closeAlertGX(){
         alert.remove()
     })
 }
-const GITHUB_TOKEN = "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"
