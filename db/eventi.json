@@ -5,6 +5,12 @@
       "publish_date": "12/10/2024",
       "event_date": "12/31/2024",
       "title": "Capodanno"
+    },
+    {
+      "id": 3,
+      "publish_date": "12/10/2024",
+      "event_date": "12/31/2024",
+      "title": "Capodanno2"
     }
   ]
 }
