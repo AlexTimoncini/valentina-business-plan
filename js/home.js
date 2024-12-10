@@ -5,6 +5,29 @@ async function init() {
         events = rs
     })
     console.log(events)
+    events.forEach(ev => {
+        let html = `
+        <li class="event">
+            <div class="event-img">
+                <img src="${ev.image}" alt="" draggable="false">
+            </div>
+            <div class="event-body">
+                <h3 class="event-title">${ev.title}</h3>
+                <p class="event-data">${new Date(ev.event_date).toLocaleDateString()} - ${ev.start.substring(0, 5)} / ${ev.end.substring(0, 5)}</p>
+            </div>
+            <div class="event-footer">
+                <div class="crowd-counter">
+                    <img src="/assets/images/team.svg" alt="crowd icon">
+                    <span>${ev.crowd_counter}</span>
+                </div>
+                <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price : 'Gratis'}</p>
+            </div>
+        </li>
+        `
+        document.getElementById("new_events").insertAdjacentHTML("beforeend", html)
+        document.getElementById("old_events").insertAdjacentHTML("beforeend", html)
+        document.getElementById("your_events").insertAdjacentHTML("beforeend", html)
+    })
     //posizione
     if(!localStorage.getItem("posizione")){
         localStorage.setItem("posizione", "Italia")
