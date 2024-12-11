@@ -1,6 +1,6 @@
 /* ALERT MANAGEMENT */
 let lastTimeoutID;
-if(!sessionStorage.getItem("userId")){
+if(sessionStorage.getItem("userId") === undefined){
     top.location.href = "#/login"
 }
 const queryString = window.location.search;

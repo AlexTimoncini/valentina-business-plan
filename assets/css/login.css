@@ -1,0 +1,64 @@
+#app{
+    padding: 20vh 0 65px;
+    position: relative;
+}
+h1{
+    color: var(--white);
+    padding: 10px 20px 0;
+}
+.logo-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10vh;
+    background-color: var(--main);
+}
+.wave{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% - 1px);
+}
+.wave img{
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+}
+.login-wrapper{
+    text-align: center;
+    padding: 10px 20px;
+}
+#login{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+label{
+    font-size: 0.9rem;
+}
+input{
+    height: 40px;
+    width: 100%;
+    border: 1px solid var(--lgray);
+    color: var(--main);
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+input:focus{
+    border-color: var(--main);
+}
+#send{
+    height: 40px;
+    background-color: var(--main);
+    font-size: 1.4rem;
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}

@@ -1,8 +1,5 @@
 init()
 async function init() {
-    if(!sessionStorage.getItem("userId")){
-        top.location.href = "#/login"
-    }
     let hash = window.location.hash,
         urlArr = hash.split("?")
     if(urlArr.length){
