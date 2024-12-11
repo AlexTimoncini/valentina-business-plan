@@ -22,7 +22,8 @@ async function init() {
                 document.getElementById("end").innerText = rs.end
                 document.getElementById("p-date").innerText = new Date(rs.publish_date).toLocaleDateString()
                 document.getElementById("p-time").innerText = new Date(rs.publish_date).toLocaleTimeString()
-
+                document.getElementById("crw-aval").innerText = (parseInt(rs.crowd_counter) - parseInt(rs.going)).toString()
+                document.getElementById("crw-tot").innerText = rs.crowd_counter
             });
         } else {
             top.location = "#/"

@@ -171,5 +171,5 @@ function stopLoading(){
     setTimeout(() => {
         document.getElementById('loader').classList.add('hidden');
         enableScroll()
-    }, 1000);
+    }, 500);
 }
