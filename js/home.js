@@ -1,15 +1,5 @@
 init()
 async function init() {
-    if(!sessionStorage.getItem("userId")){
-       top.location.href = "#/login"
-    }
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    if(urlParams.has('logout')){
-        sessionStorage.clear()
-        top.location.href = "https://insiemeventi.it/#/login"
-        return
-    }
     let events;
     await getEvents('new').then(rs=>{
         events = rs
@@ -17,7 +7,7 @@ async function init() {
     if(events.length){
         events.forEach(ev => {
             let html = `
-            <li class="event">
+            <li class="event" onclick="top.location.href = '#/evento?id=${ev.id}'">
                 <div class="event-img">
                     <img src="${ev.image}" alt="" draggable="false">
                 </div>
@@ -59,7 +49,7 @@ async function init() {
     if(events.length) {
         events.forEach(ev => {
             let html = `
-            <li class="event">
+            <li class="event" onclick="top.location.href = '#/evento?id=${ev.id}'">
                 <div class="event-img">
                     <img src="${ev.image}" alt="" draggable="false">
                 </div>
@@ -103,7 +93,7 @@ async function init() {
         if(events.length){
             events.forEach(ev => {
                 let html = `
-            <li class="event">
+            <li class="event" onclick="top.location.href = '#/evento?id=${ev.id}'">
                 <div class="event-img">
                     <img src="${ev.image}" alt="" draggable="false">
                 </div>

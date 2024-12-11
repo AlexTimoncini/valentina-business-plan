@@ -1,15 +1,15 @@
 console.log("HOMEPAGE")
 init()
 async function init() {
-    let events;
-    await getEvents().then(rs=>{
-        events = rs
-    })
-    console.log(events)
+    if (!sessionStorage.getItem("user")) {
+        document.getElementById("my_events").innerHTML = `
+            <p>Effettua il <a class="main-link" href="/?logout">login</a> per visualizzare i tuoi eventi!</p>
+        `
+    }
 }
 async function getEvents() {
     try {
-        const response = await fetch("https://taggx.it/eventi", {
+        const response = await fetch("https://taggx.it/utenti/"+sessionStorage.getItem("userId")+"/eventi", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

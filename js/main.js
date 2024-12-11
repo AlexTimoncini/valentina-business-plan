@@ -1,5 +1,15 @@
 /* ALERT MANAGEMENT */
 let lastTimeoutID;
+if(!sessionStorage.getItem("userId")){
+    top.location.href = "#/login"
+}
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+if(urlParams.has('logout')){
+    sessionStorage.clear()
+    top.location.href = "https://insiemeventi.it/#/login"
+}
+
 function alert(msg, type, errorSelector=false){
     //eliminiamo alert già aperti
     let oldAlerts = document.querySelectorAll('.alert')

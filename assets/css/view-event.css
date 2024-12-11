@@ -1,0 +1,75 @@
+#app{
+    padding: 0;
+}
+.evento{
+    position: relative;
+}
+.back-btn{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: var(--white);
+    z-index: 2;
+}
+.back-btn img{
+    width: 45px;
+    cursor: pointer;
+    filter: invert(1);
+}
+.evento-img{
+    width: 100%;
+    height: 300px;
+    background-color: var(--main);
+    position: relative;
+}
+.evento-img img{
+    width: 100%;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.evento-img::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,.3);
+    z-index: 1;
+}
+.evento-body{
+    padding: 0 20px;
+}
+.evento h1{
+    font-size: 1.6rem;
+    padding: 10px 0 5px;
+    color: var(--main);
+}
+.evento h2{
+    font-size: 1.3rem;
+    color: var(--main);
+}
+.evento-details{
+    max-width: 80%;
+    margin: 2rem auto 0;
+    list-style: none;
+    border: 2px solid var(--main);
+    border-radius: 15px;
+    padding: 5px 12px;
+}
+.evento-details li{
+    padding: 3px 0;
+}
+.evento-details span{
+    color: var(--main);
+}
+button{
+    display: block;
+    margin: 2rem auto 0;
+    background-color: var(--main);
+    border: none;
+    color: var(--white);
+    border-radius: 10px;
+    padding: 10px 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

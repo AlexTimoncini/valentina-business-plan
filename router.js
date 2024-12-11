@@ -34,6 +34,21 @@ router.get('/nuovo-evento', function(){
         document.querySelector('footer li[data-router="new"]').classList.add("active")
     })
 });
+router.get('/evento', function(){
+    buildPage('view-event.html',
+        [
+            'view-event.css'
+        ],
+        [
+            {url: 'view-event.js'}
+        ]).then(()=> {
+        stopLoading()
+        if(document.querySelector("footer li.active")){
+            document.querySelector("footer li.active").classList.remove("active")
+        }
+        document.querySelector('footer li[data-router="discover"]').classList.add("active")
+    })
+});
 router.get('/login', function(){
     buildPage('login.html',
         [
