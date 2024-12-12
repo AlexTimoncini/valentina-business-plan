@@ -1,5 +1,12 @@
 init()
 async function init() {
+    /*LOGIN MANAGEMENT*/
+    if(sessionStorage.getItem("userId") === null){
+        sessionStorage.clear()
+        top.location.href = "#/login"
+        return
+    }
+    /*END LOGIN*/
     let hash = window.location.hash,
         urlArr = hash.split("?")
     if(urlArr.length){

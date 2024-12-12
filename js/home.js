@@ -1,5 +1,11 @@
 init()
 async function init() {
+    /*LOGIN MANAGEMENT*/
+    if(sessionStorage.getItem("userId") === null){
+        sessionStorage.clear()
+        top.location.href = "#/login"
+    }
+    /*END LOGIN*/
     let events;
     await getEvents('new').then(rs=>{
         events = rs

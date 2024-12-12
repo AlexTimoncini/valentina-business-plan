@@ -1,10 +1,15 @@
 console.log("NEW EVENT")
 init()
 function init() {
+    /*LOGIN MANAGEMENT*/
+    if(sessionStorage.getItem("userId") === null){
+        sessionStorage.clear()
+        top.location.href = "#/login"
+    }
+    /*END LOGIN*/
     if (!sessionStorage.getItem("userName")) {
         document.getElementById("nuovo_evento").innerHTML = `
-            <p>Effettua il <a class="main-link" href="/?logout">login</a> per poter creare i tuoi eventi!</p>
-        `
+            <p>Effettua il <a class="main-link" onclick="sessionStorage.clear();top.location.href = '/'">login</a> per poter creare i tuoi eventi!</p>`
     }
 }
 async function newEventExample() {
