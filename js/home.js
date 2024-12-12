@@ -11,6 +11,7 @@ async function init() {
         events = rs
     })
     if(events && events.length){
+        document.getElementById("new_events").innerHTML = ''
         events.forEach(ev => {
             let html = `
             <li class="event" onclick="top.location.href = '#/evento?id=${ev.id}'">
@@ -28,31 +29,15 @@ async function init() {
                     </div>
                     <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price+"€" : 'Gratis'}</p>
                 </div>
-            </li>
-            `
+            </li>`
             document.getElementById("new_events").insertAdjacentHTML("beforeend", html)
         })
-    } else {
-        let html = `
-            <li class="event">
-                <div class="event-img">
-                </div>
-                <div class="event-body">
-                    <h3 class="event-title">Nessun evento disponibile!</h3>
-                    <p class="event-data">&nbsp;</p>
-                </div>
-            <div class="event-footer">
-                <div class="crowd-counter">
-                </div>
-                <p class="entry-price">&nbsp;</p>
-            </div>
-            </li>`
-        document.getElementById("new_events").insertAdjacentHTML("beforeend", html)
     }
     await getEvents('old').then(rs=>{
         events = rs
     })
     if(events && events.length) {
+        document.getElementById("old_events").innerHTML = ''
         events.forEach(ev => {
             let html = `
             <li class="event" onclick="top.location.href = '#/evento?id=${ev.id}'">
@@ -70,32 +55,16 @@ async function init() {
                     </div>
                     <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price+"€" : 'Gratis'}</p>
                 </div>
-            </li>
-            `
+            </li>`
             document.getElementById("old_events").insertAdjacentHTML("beforeend", html)
         })
-    } else {
-        let html = `
-            <li class="event">
-                <div class="event-img">
-                </div>
-                <div class="event-body">
-                    <h3 class="event-title">Nessun evento nei prossimi 7 giorni!</h3>
-                    <p class="event-data">&nbsp;</p>
-                </div>
-            <div class="event-footer">
-                <div class="crowd-counter">
-                </div>
-                <p class="entry-price">&nbsp;</p>
-            </div>
-            </li>`
-        document.getElementById("old_events").insertAdjacentHTML("beforeend", html)
     }
-    if(sessionStorage.getItem("user")){
+    if(sessionStorage.getItem("userName")){
         await getEvents('mine').then(rs=>{
             events = rs
         })
         if(events && events.length){
+            document.getElementById("your_events").innerHTML = ''
             events.forEach(ev => {
                 let html = `
             <li class="event" onclick="top.location.href = '#/evento?id=${ev.id}'">
@@ -116,22 +85,6 @@ async function init() {
             </li>`
                 document.getElementById("your_events").insertAdjacentHTML("beforeend", html)
             })
-        } else {
-            let html = `
-            <li class="event">
-                <div class="event-img">
-                </div>
-                <div class="event-body">
-                    <h3 class="event-title">Nessun evento salvato!</h3>
-                    <p class="event-data">&nbsp;</p>
-                </div>
-            <div class="event-footer">
-                <div class="crowd-counter">
-                </div>
-                <p class="entry-price">&nbsp;</p>
-            </div>
-            </li>`
-            document.getElementById("your_events").insertAdjacentHTML("beforeend", html)
         }
     } else{
         let html = `
@@ -148,6 +101,7 @@ async function init() {
                 <p class="entry-price">&nbsp;</p>
             </div>
         </li>`
+        document.getElementById("your_events").innerHTML = ''
         document.getElementById("your_events").insertAdjacentHTML("beforeend", html)
     }
     //posizione
