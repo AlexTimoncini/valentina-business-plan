@@ -10,7 +10,7 @@ async function init() {
     await getEvents('new').then(rs=>{
         events = rs
     })
-    if(events.length){
+    if(events && events.length){
         events.forEach(ev => {
             let html = `
             <li class="event" onclick="top.location.href = '#/evento?id=${ev.id}'">
@@ -26,7 +26,7 @@ async function init() {
                         <img src="/assets/images/team.svg" alt="crowd icon">
                         <span>${!isNaN(parseInt(ev.going)) ? ev.going : 0} / ${ev.crowd_counter}</span>
                     </div>
-                    <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price : 'Gratis'}</p>
+                    <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price+"€" : 'Gratis'}</p>
                 </div>
             </li>
             `
@@ -52,7 +52,7 @@ async function init() {
     await getEvents('old').then(rs=>{
         events = rs
     })
-    if(events.length) {
+    if(events && events.length) {
         events.forEach(ev => {
             let html = `
             <li class="event" onclick="top.location.href = '#/evento?id=${ev.id}'">
@@ -68,7 +68,7 @@ async function init() {
                         <img src="/assets/images/team.svg" alt="crowd icon">
                         <span>${!isNaN(parseInt(ev.going)) ? ev.going : 0} / ${ev.crowd_counter}</span>
                     </div>
-                    <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price : 'Gratis'}</p>
+                    <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price+"€" : 'Gratis'}</p>
                 </div>
             </li>
             `
@@ -95,7 +95,7 @@ async function init() {
         await getEvents('mine').then(rs=>{
             events = rs
         })
-        if(events.length){
+        if(events && events.length){
             events.forEach(ev => {
                 let html = `
             <li class="event" onclick="top.location.href = '#/evento?id=${ev.id}'">
@@ -111,7 +111,7 @@ async function init() {
                         <img src="/assets/images/team.svg" alt="crowd icon">
                         <span>${!isNaN(parseInt(ev.going)) ? ev.going : 0} / ${ev.crowd_counter}</span>
                     </div>
-                    <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price : 'Gratis'}</p>
+                    <p class="entry-price">${ev.ticket_price > 0 ? ev.ticket_price+"€" : 'Gratis'}</p>
                 </div>
             </li>`
                 document.getElementById("your_events").insertAdjacentHTML("beforeend", html)

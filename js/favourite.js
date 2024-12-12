@@ -1,4 +1,4 @@
-console.log("HOMEPAGE")
+console.log("FAVOURITE")
 init()
 async function init() {
     /*LOGIN MANAGEMENT*/
