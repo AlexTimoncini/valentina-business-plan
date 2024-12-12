@@ -38,6 +38,13 @@ function sendData(event){
         pw: document.getElementById("pw").value.trim()
     }
     if(document.querySelectorAll(".error.active").length || !data.un || !data.pw){
+        Object.keys(data).forEach(name=>{
+            if(!data[name]){
+                if(!document.querySelector("#"+name+" ~ .error").classList.contains("active")){
+                    document.querySelector("#"+name+" ~ .error").classList.add("active")
+                }
+            }
+        })
         return false
     }
     try {

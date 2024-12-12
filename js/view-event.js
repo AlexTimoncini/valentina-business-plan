@@ -18,7 +18,7 @@ async function init() {
                     document.querySelector(".evento .evento-img").innerHTML = `<img src="${rs.image}" draggable="false">`
                 }
                 document.querySelector(".evento .evento-title").innerText = rs.title
-                document.getElementById("ev-price").innerText = rs.ticket_price > 0 ? rs.ticket_price : 'Gratis'
+                document.getElementById("ev-price").innerText = rs.ticket_price > 0 ? rs.ticket_price+'€' : 'Gratis'
                 document.querySelector(".evento .evento-discr").innerText = rs.descr
                 document.getElementById("indirizzo").innerText = rs.indirizzo
                 document.getElementById("ev-date").innerText = rs.event_date
