@@ -35,6 +35,110 @@ body{
     text-decoration: underline;
     color: var(--main)
 }
+.alert{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    position: fixed;
+    left: calc(50% - 150px);
+    top: 20px;
+    width: calc(100% - 20px);
+    max-width: 300px;
+    height: 70px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 5px 20px 5px 10px;
+    overflow: hidden;
+    z-index: 100;
+}
+.alert-msg{
+    flex-grow: 1;
+    padding-left: 10px;
+}
+.alert-icon::before {
+    content: "\26A0"; /* Unicode character for warning symbol */
+    font-size: 24px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--main);
+}
+.alert-progress{
+    width: 0;
+    height: 5px;
+    background-color: var(--main);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: progress linear 5s;
+}
+.error{
+    color: red!important;
+    border-color: red!important;
+}
+
+@keyframes progress {
+    from{
+        width: 100%;
+    }
+    to{
+        width: 0;
+    }
+}
+
+.success-icon::before {
+    content: "\2713"; /* Unicode character for checkmark symbol */
+    font-size: 24px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--main);
+}
+.error-icon::before {
+    content: "\2717"; /* Unicode character for cross symbol */
+    font-size: 24px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+}
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.close-button::before,
+.close-button::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    border-radius: 4px;
+    height: 100%;
+    background-color: var(--main);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.close-button::before {
+    transform: translateX(-50%) rotate(45deg);
+}
+.close-button::after {
+    transform: translateX(-50%) rotate(-45deg);
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
 @font-face {
     font-family: 'Poppins';
     src: url(/assets/fonts/Poppins-Regular.ttf) format('truetype');

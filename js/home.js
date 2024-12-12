@@ -85,7 +85,6 @@ async function init() {
             </li>`
         document.getElementById("old_events").insertAdjacentHTML("beforeend", html)
     }
-
     if(sessionStorage.getItem("user")){
         await getEvents('mine').then(rs=>{
             events = rs
@@ -173,7 +172,6 @@ async function init() {
     } else {
         console.error("La Geolocalizzazione non è supportata dal browser.")
     }
-    
     let posizione = localStorage.getItem("posizione")
     document.getElementById("posizione").innerText = posizione
 }

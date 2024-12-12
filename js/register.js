@@ -1,11 +1,10 @@
 init()
 function init() {
-    document.getElementById("guest_login").addEventListener("click", ()=>{guestLogin()})
     document.getElementById("footer").remove()
     if(sessionStorage.getItem("userId") !== undefined){
         sessionStorage.clear()
     }
-    document.getElementById("login").addEventListener("submit", (event)=>{sendData(event)})
+    document.getElementById("register").addEventListener("submit", (event)=>{sendData(event)})
     document.getElementById("un").addEventListener("input", ()=>{
         let un = document.getElementById("un").value
         if(!un || un.length < 2 || un.length > 20){
@@ -27,10 +26,6 @@ function init() {
         }
     })
 }
-function guestLogin() {
-    sessionStorage.setItem("userId", "0")
-    top.location.href = "#/"
-}
 function sendData(event){
     event.preventDefault()
     let data = {
@@ -41,26 +36,25 @@ function sendData(event){
         return false
     }
     try {
-        const response = fetch("https://taggx.it/auth", {
+        const response = fetch("https://taggx.it/register", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
         })
-        .then(response=>response.json())
-        .then((data)=>{
-            console.log(data, "dasda")
-            if(data){
-                if(parseInt(data.result) === 0){
-                    alert(data.msg)
-                } else {
-                    sessionStorage.setItem("userId", data.data.id)
-                    sessionStorage.setItem("userName", data.data.username)
-                    top.location.href = "/"
+            .then(response=>response.json())
+            .then((data)=>{
+                if(data){
+                    if(parseInt(data.result) === 0){
+                        alert(data.msg)
+                    } else {
+                        sessionStorage.setItem("userId", data.data.id)
+                        sessionStorage.setItem("userName", data.data.username)
+                        top.location.href = "/"
+                    }
                 }
-            }
-        })
+            })
     } catch (error) {
         console.error('Errore:', error);
     }

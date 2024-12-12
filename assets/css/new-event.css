@@ -1,0 +1,49 @@
+#new{
+    display: flex;
+    flex-direction: column;
+}
+#send{
+    height: 40px;
+    background-color: var(--main);
+    font-size: 1.4rem;
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+input[type=text],
+input[type=number],
+input[type=date],
+input[type=time],
+textarea{
+    height: 40px;
+    width: 100%;
+    border: 1px solid var(--lgray);
+    color: var(--main);
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+textarea{
+    height: 120px;
+}
+label{
+    font-size: 0.9rem;
+}
+label.error {
+    color: red;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transition: all .33s linear;
+}
+label.error.active{
+    opacity: 1;
+}
+input[type=file]{
+    margin-bottom: 1rem;
+}

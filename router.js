@@ -60,6 +60,17 @@ router.get('/login', function(){
         stopLoading()
     })
 });
+router.get('/registrati', function(){
+    buildPage('register.html',
+        [
+            'register.css'
+        ],
+        [
+            {url: 'register.js'}
+        ]).then(()=> {
+        stopLoading()
+    })
+});
 router.get('/preferiti', function(){
     buildPage('favourite.html',
         [
@@ -89,9 +100,7 @@ router.get('/team', function(){
         document.querySelector('footer li[data-router="team"]').classList.add("active")
     })
 });
-
 router.start();
-
 async function buildPage(mainHTML, css, scriptList){
     //RUN
     startLoading()
@@ -101,7 +110,6 @@ async function buildPage(mainHTML, css, scriptList){
     if (!document.getElementById("footer"))await footer()
     await main()
     await scripts()
-
     //Functions
     function removeOldStyles() {
         const existingStyles = document.querySelectorAll('link[rel="stylesheet"]:not([data-default=true])');
@@ -157,10 +165,7 @@ async function buildPage(mainHTML, css, scriptList){
             document.body.append(newScript);
         })
     }
-    
-
 }
-
 function startLoading(){
     disableScroll()
     if (document.getElementById("loader")) {

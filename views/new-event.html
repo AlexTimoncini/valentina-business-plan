@@ -1,4 +1,41 @@
-<h1>Nuovo evento</h1>
+<h1>Crea un nuovo evento</h1>
 <div id="nuovo_evento">
+    <form novalidate id="new">
+        <label for="image">Immagine</label>
+        <input type="file" id="image" name="image" accept="image/*">
 
+        <label for="title">Titolo</label>
+        <input type="text" id="title" name="title" maxlength="255">
+        <label for="title" class="error">Inserire un titolo valido</label>
+
+        <label for="descr">Descrizione</label>
+        <textarea id="descr" name="descr" maxlength="1024"></textarea>
+        <label for="descr" class="error">Descrizione troppo lunga</label>
+
+        <label for="indirizzo">Indirizzo</label>
+        <input type="text" id="indirizzo" name="indirizzo" maxlength="255">
+        <label for="indirizzo" class="error">Inserire un indirizzo</label>
+
+        <label for="ticket_price">Prezzo d'entrata</label>
+        <input type="number" id="ticket_price" name="ticket_price" max="99.99" min="0">
+        <label for="ticket_price" class="error">Inserire un prezzo valido</label>
+
+        <label for="crowd_counter">Posti disponibili</label>
+        <input type="number" id="crowd_counter" name="crowd_counter" max="999999" min="0">
+        <label for="crowd_counter" class="error">Inserire un numero valido</label>
+
+        <label for="event_date">Data dell'evento</label>
+        <input type="date" id="event_date" name="event_date">
+        <label for="event_date" class="error">Inserire una data valida</label>
+
+        <label for="start_time">Ora inizio evento</label>
+        <input type="time" id="start_time" name="start_time">
+        <label for="start_time" class="error">Inserire una ora valida</label>
+
+        <label for="end_time">Ora fine evento</label>
+        <input type="time" id="end_time" name="end_time">
+        <label for="end_time" class="error">Inserire una ora valida</label>
+
+        <button id="send">CREA</button>
+    </form>
 </div>

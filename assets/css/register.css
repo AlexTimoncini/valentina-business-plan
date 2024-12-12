@@ -27,11 +27,11 @@ h1{
     object-position: center;
     display: block;
 }
-.login-wrapper{
+.register-wrapper{
     text-align: center;
     padding: 10px 20px;
 }
-#login{
+#register{
     display: flex;
     flex-direction: column;
     text-align: left;
