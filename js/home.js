@@ -1,5 +1,8 @@
 init()
 async function init() {
+    if(document.querySelector("body > div")){
+        document.querySelector("body > div").remove()
+    }
     /*LOGIN MANAGEMENT*/
     if(sessionStorage.getItem("userId") === null){
         sessionStorage.clear()
