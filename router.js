@@ -92,6 +92,7 @@ router.get('/team', function(){
             'team.css'
         ],
         [
+            {url: 'team.js'}
         ]).then(()=> {
         stopLoading()
         if(document.querySelector("footer li.active")){

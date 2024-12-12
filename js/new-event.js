@@ -120,6 +120,7 @@ function sendData(event){
     } else {
         data.event_date = data.event_date.toLocaleDateString()
         data.image = document.getElementById("image").value
+        data.userId = sessionStorage.getItem("userId")
     }
     try {
         const response = fetch("https://taggx.it/eventi", {

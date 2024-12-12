@@ -154,7 +154,6 @@ async function getEvents(type) {
         })
         if (response.ok) {
             return await response.json();
-
         } else {
             console.error('Errore nella richiesta', response.statusText);
         }

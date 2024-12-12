@@ -3,6 +3,7 @@
     width: 90vw;
     max-width: 300px;
     text-align: center;
+    animation: shake 1s linear 3;
 }
 #valentina .name{
     font-size: 1.5rem;
@@ -27,6 +28,7 @@
 h2{
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
+    text-align: center;
 }
 .team{
     display: flex;
@@ -41,6 +43,7 @@ h2{
 }
 .person{
     width: calc(50% - 8px);
+    animation: shake 1s linear 3;
 }
 .person img{
     width: 100%;
@@ -57,4 +60,11 @@ h2{
     width: 100%;
     color: #1c1c1c;
     font-size: 6rem;
+}
+@keyframes shake {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(4px, 4px) rotate(4deg); }
+    50% { transform: translate(0, 0) rotate(0deg); }
+    75% { transform: translate(-4px, 4px) rotate(-4deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
 }
