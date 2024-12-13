@@ -143,7 +143,7 @@ async function getEvents(type) {
     } else if(type === 'old') {
         url += 'eventi-old'
     } else if(type === 'mine') {
-        url += '/utenti/'+sessionStorage.getItem('userId')+'/eventi'
+        url += 'utenti/'+sessionStorage.getItem('userId')+'/eventi'
     }
     try {
         const response = await fetch(url, {
